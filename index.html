@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/index.css">
+    <script type="text/javascript" src="assets/js/index.js"></script>
+    <title>Password generator</title>
+</head>
+
+<body>
+
+
+    <main>
+        <div class="container">
+
+            <h1>Password GENERATOR</h1>
+
+            <div id="resultCont" class="resultCont">
+                <div id="result" class="result">GENERATE</div>
+            </div>
+
+
+            <div class="range_container">
+
+                <small>Length: <b id="length">16</b></small>
+
+                <div class="range_body">
+
+                    <small>8</small>
+                    <input type="range" id="range" class="range" min="8" max="128" value="16">
+                    <small>128</small>
+
+                </div>
+
+            </div>
+
+            <div class="settings">
+
+                <small>Settings</small>
+
+                <div class="settings_container">
+
+                    <div class="body">
+                        <label for="uppercase">Include Uppercase</label>
+
+                        <label class="switch">
+                            <input type="checkbox" checked id="uppercase">
+                            <span class="slider round"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="body">
+                        <label for="lowercase">Include Lowercase</label>
+
+                        <label class="switch">
+                            <input type="checkbox" checked id="lowercase">
+                            <span class="slider round"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="body">
+                        <label for="numbers">Include Numbers</label>
+
+                        <label class="switch">
+                            <input type="checkbox" id="numbers">
+                            <span class="slider round"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="body">
+                        <label for="symbols">Include Symbols</label>
+
+                        <label class="switch">
+                            <input type="checkbox" id="symbols">
+                            <span class="slider round"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <button type="button" id="generate" class="generate">Generate</button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
