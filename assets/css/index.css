@@ -91,9 +91,6 @@ main .container .generate:hover {
   opacity: 0.5;
 }
 @media only screen and (max-width: 768px) {
-  main {
-    padding: 20px;
-  }
   main .container h1 {
     font-size: 18px;
   }
