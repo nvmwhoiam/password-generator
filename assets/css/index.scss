@@ -1,0 +1,129 @@
+@import "./mixin.scss";
+
+main {
+    @include Dflex(center);
+
+    .container {
+        width: 100%;
+        max-width: 500px;
+        padding: $md_p;
+        border: 1px solid $borderColor;
+        border-radius: $brRad;
+        display: flex;
+        flex-direction: column;
+        gap: $md_p;
+
+        h1 {
+            text-align: center;
+            margin-bottom: $md_p;
+        }
+
+        .resultCont {
+            padding: $md_p;
+            background-color: var(--BackColour2);
+            @include Dflex(center);
+            cursor: pointer;
+            border-radius: $brRad;
+            position: relative;
+
+            .result {
+                word-break: break-all;
+            }
+
+            .copied {
+                @include position (absolute, $top: -25px, $right: 0);
+                display: none;
+            }
+        }
+
+        .title {
+            display: block;
+            margin-bottom: $sm_p;
+        }
+
+        .range_container {
+
+            .range_body {
+                padding: $md_p;
+                @include Dflex(space-between);
+                border-radius: $brRad;
+                gap: $md_p;
+                background-color: var(--BackColour2);
+
+                small {
+                    font-size: 14px;
+                }
+
+                .range {
+                    flex: 1;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .settings_container {
+            .settings_wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: $sm_p;
+
+                .body {
+                    padding: $md_p;
+                    @include Dflex(space-between);
+                    border-radius: $brRad;
+                    background-color: var(--BackColour2);
+                }
+            }
+        }
+
+        .generate_btn {
+            width: 100%;
+            cursor: pointer;
+            border-radius: $brRad;
+            transition: opacity 400ms ease;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        & {
+            .container {
+                border-width: 0;
+
+                h1 {
+                    font-size: 18px;
+                }
+
+                .toggle {
+                    &.lg_toggle {
+                        width: 40px;
+                        height: 25px;
+
+                        .slider_bg {
+                            span {
+                                width: 15px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        & {
+            width: 100vw;
+            height: 100vh;
+
+            .container {
+                h1 {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}

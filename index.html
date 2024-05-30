@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/index.css">
-    <script type="text/javascript" src="assets/js/index.js"></script>
+    <meta name="author" content="nvmwhoiam">
     <title>Password generator</title>
 </head>
 
@@ -14,84 +14,99 @@
 
 
     <main>
-        <div class="container">
 
-            <h1>Password GENERATOR</h1>
+        <section class="container">
 
-            <div id="resultCont" class="resultCont">
-                <div id="result" class="result">GENERATE</div>
+            <header>
+                <h1>Password GENERATOR</h1>
+            </header>
+
+            <div id="resultCont" data-show="result" class="resultCont">
+                <div data-generate="result" class="result">GENERATE</div>
+                <div class="copied">Copied!</div>
             </div>
 
 
             <div class="range_container">
 
-                <small>Length: <b id="length">16</b></small>
+                <span class="title">Length: <b data-show="length">16</b></span>
 
                 <div class="range_body">
 
                     <small>8</small>
-                    <input type="range" id="range" class="range" min="8" max="128" value="16">
+                    <input type="range" data-element="range" class="range" min="8" max="128" value="16">
                     <small>128</small>
 
                 </div>
 
             </div>
 
-            <div class="settings">
+            <div class="settings_container">
 
-                <small>Settings</small>
+                <span class="title">Settings</span>
 
-                <div class="settings_container">
+                <div class="settings_wrapper">
 
                     <div class="body">
-                        <label for="uppercase">Include Uppercase</label>
+                        <label for="hasuppercase">Include Uppercase</label>
 
-                        <label class="switch">
-                            <input type="checkbox" checked id="uppercase">
-                            <span class="slider round"></span>
+                        <label class="toggle lg_toggle">
+                            <input type="checkbox" name="hasuppercase" id="hasuppercase" checked>
+                            <span class="slider_bg">
+                                <span></span>
+                            </span>
                         </label>
 
                     </div>
 
                     <div class="body">
-                        <label for="lowercase">Include Lowercase</label>
+                        <label for="haslowercase">Include Lowercase</label>
 
-                        <label class="switch">
-                            <input type="checkbox" checked id="lowercase">
-                            <span class="slider round"></span>
+                        <label class="toggle lg_toggle">
+                            <input type="checkbox" name="haslowercase" id="haslowercase">
+                            <span class="slider_bg">
+                                <span></span>
+                            </span>
                         </label>
 
                     </div>
 
                     <div class="body">
-                        <label for="numbers">Include Numbers</label>
+                        <label for="hasnumbers">Include Numbers</label>
 
-                        <label class="switch">
-                            <input type="checkbox" id="numbers">
-                            <span class="slider round"></span>
+                        <label class="toggle lg_toggle">
+                            <input type="checkbox" name="hasnumbers" id="hasnumbers">
+                            <span class="slider_bg">
+                                <span></span>
+                            </span>
                         </label>
 
                     </div>
 
                     <div class="body">
-                        <label for="symbols">Include Symbols</label>
+                        <label for="hasspecialchars">Include Symbols</label>
 
-                        <label class="switch">
-                            <input type="checkbox" id="symbols">
-                            <span class="slider round"></span>
+                        <label class="toggle lg_toggle">
+                            <input type="checkbox" name="hasspecialchars" id="hasspecialchars">
+                            <span class="slider_bg">
+                                <span></span>
+                            </span>
                         </label>
 
                     </div>
 
                 </div>
 
-                <button type="button" id="generate" class="generate">Generate</button>
 
             </div>
 
-        </div>
+            <button type="button" class="btn_btn btn_primary generate_btn" data-btn="generate">Generate</button>
+
+        </section>
 
     </main>
+
+    <script type="text/javascript" src="assets/js/index.js"></script>
 
 </body>
 

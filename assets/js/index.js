@@ -1,92 +1,77 @@
-window.addEventListener("load", function () {
-    const currentEl = document.getElementById("length")
-    const resultEl = document.getElementById("result");
-    const resultContEl = document.getElementById("resultCont");
-    const rangeEl = document.getElementById("range");
-    const upperEl = document.getElementById("uppercase");
-    const lowerEl = document.getElementById("lowercase");
-    const numbersEl = document.getElementById("numbers");
-    const symbolsEl = document.getElementById("symbols");
-    const generateEl = document.getElementById("generate");
 
-    let range = rangeEl.value;
-    const hasUpper = upperEl.checked;
-    const haslowerEl = lowerEl.checked;
-    const hasnumbersEl = numbersEl.checked;
-    const hassymbolsEl = symbolsEl.checked;
+const currentLength = document.querySelector('[data-show="length"]');
+const generateResult = document.querySelector('[data-generate="result"]');
+const resultDiv = document.querySelector('[data-show="result"]');
+const rangeDiv = document.querySelector('[data-element="range"]');
+const hasUppercase = document.querySelector('[name="hasuppercase"]');
+const hasLowercase = document.querySelector('[name="haslowercase"]');
+const hasNumbers = document.querySelector('[name="hasnumbers"]');
+const hasSpecialChars = document.querySelector('[name="hasspecialchars"]');
+const generateBtn = document.querySelector('[data-btn="generate"]');
 
-    function AllowedChars(uppercase, lowercase, numbers, symbols) {
-        let pwd = "";
+function getAllowedChars() {
+    let chars = {
+        uppercase: 'QWERTYUIOPASDFGHJKLZXCVBNM',
+        lowercase: 'qwertyuiopasdfghjklzxcvbnm',
+        numbers: '1234567890',
+        symbols: '!@#$%^&*(),.?":{}|<>',
+    };
+    return chars;
+}
 
-        if (uppercase) {
+function generatePassword(length = 8) {
+    const chars = getAllowedChars();
+    let password = [];
+    let allChars = '';
 
-            pwd += "QWERTYUIOPASDFGHJKLZXCVBNM";
-
-        }
-
-        if (lowercase) {
-
-            pwd += "qwertyuiopasdfghjklzxcvbnm";
-
-        }
-
-        if (numbers) {
-
-            pwd += "1234567890";
-
-        }
-
-        if (symbols) {
-
-            pwd += "@$!%*#?&";
-
-        }
-
-        return pwd;
+    if (hasUppercase.checked) {
+        password.push(chars.uppercase.charAt(Math.floor(Math.random() * chars.uppercase.length)));
+        allChars += chars.uppercase;
+    }
+    if (hasLowercase.checked) {
+        password.push(chars.lowercase.charAt(Math.floor(Math.random() * chars.lowercase.length)));
+        allChars += chars.lowercase;
+    }
+    if (hasNumbers.checked) {
+        password.push(chars.numbers.charAt(Math.floor(Math.random() * chars.numbers.length)));
+        allChars += chars.numbers;
+    }
+    if (hasSpecialChars.checked) {
+        password.push(chars.symbols.charAt(Math.floor(Math.random() * chars.symbols.length)));
+        allChars += chars.symbols;
     }
 
-    function generatePassword1(length = 8) {
-
-        // let pwd = AllowedChars(upperEl.checked, lowerEl.checked, numbersEl.checked, symbolsEl.checked);
-        let pwd = AllowedChars(upperEl.checked, lowerEl.checked, numbersEl.checked, true);
-
-        let retVal = "";
-
-        for (var i = 0, n = pwd.length; i < length; ++i) {
-            retVal += pwd.charAt(Math.floor(Math.random() * n));
-        }
-
-        return retVal;
-
+    for (let i = password.length; i < length; i++) {
+        password.push(allChars.charAt(Math.floor(Math.random() * allChars.length)));
     }
 
-    console.log(generatePassword1(8))
+    // Shuffle the password array to ensure randomness
+    return password.sort(() => Math.random() - 0.5).join('');
+}
 
-    rangeEl.addEventListener("input", () => {
+rangeDiv.addEventListener('input', () => {
+    const length = rangeDiv.value;
+    currentLength.innerHTML = length;
+});
 
-        currentEl.innerHTML = rangeEl.value;
-        resultEl.innerHTML = generatePassword1(rangeEl.value);
+generateBtn.addEventListener('click', () => {
+    generateResult.innerHTML = generatePassword(rangeDiv.value);
+});
 
-    });
+resultDiv.addEventListener('click', () => {
+    if (generateResult.innerHTML !== 'GENERATE') {
+        copyToClipboard(generateResult.innerText);
 
-    generateEl.addEventListener("click", () => {
+        const copied = document.querySelector(".copied");
+        copied.style.display = 'block';
 
-        resultEl.innerHTML = generatePassword1(rangeEl.value);
-
-    });
-
-    resultContEl.addEventListener("click", () => {
-
-        if (resultEl.innerHTML !== "GENERATE") {
-
-            copyText(resultEl);
-
-        }
-
-    });
-
-    function copyText(e) {
-
-        navigator.clipboard.writeText(e.innerText);
+        setTimeout(() => {
+            copied.style.display = 'none';
+        }, 3000);
     }
 });
+
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text);
+}
