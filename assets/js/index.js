@@ -9,12 +9,16 @@ const hasNumbers = document.querySelector('[name="hasnumbers"]');
 const hasSpecialChars = document.querySelector('[name="hasspecialchars"]');
 const generateBtn = document.querySelector('[data-btn="generate"]');
 
+function encodeHTML(str) {
+    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function getAllowedChars() {
     let chars = {
         uppercase: 'QWERTYUIOPASDFGHJKLZXCVBNM',
         lowercase: 'qwertyuiopasdfghjklzxcvbnm',
         numbers: '1234567890',
-        symbols: '!@#$%^&*(),.?":{}|',
+        symbols: '!@#$%^&*(),.?":{}|<>',
     };
     return chars;
 }
@@ -46,7 +50,7 @@ function generatePassword(length = 8) {
     }
 
     // Shuffle the password array to ensure randomness
-    return password.sort(() => Math.random() - 0.5).join('');
+    return encodeHTML(password.sort(() => Math.random() - 0.5).join(''));
 }
 
 rangeDiv.addEventListener('input', () => {
