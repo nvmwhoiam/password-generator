@@ -14,7 +14,7 @@ function getAllowedChars() {
         uppercase: 'QWERTYUIOPASDFGHJKLZXCVBNM',
         lowercase: 'qwertyuiopasdfghjklzxcvbnm',
         numbers: '1234567890',
-        symbols: '!@#$%^&*(),.?":{}|<>',
+        symbols: '!@#$%^&*(),.?":{}|',
     };
     return chars;
 }
