@@ -1,4 +1,3 @@
-
 const currentLength = document.querySelector('[data-show="length"]');
 const generateResult = document.querySelector('[data-generate="result"]');
 const resultDiv = document.querySelector('[data-show="result"]');
