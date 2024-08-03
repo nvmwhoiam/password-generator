@@ -15,7 +15,7 @@ A web-based application to generate secure and customizable passwords. Users can
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/password-generator.git
+   git clone https://github.com/nvmwhoiam/password-generator.git
    ```
 2. Navigate to the project directory:
    ```sh
