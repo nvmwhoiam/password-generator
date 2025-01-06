@@ -1,29 +1,28 @@
-@import "./mixin.scss";
+@import "./general/base.scss";
+@import "./general/mixin.scss";
 
-main {
+.main_container {
     @include Dflex(center);
 
-    .container {
+    .section_container {
         width: 100%;
         max-width: 500px;
-        padding: $md_p;
-        border: 1px solid $borderColor;
-        border-radius: $brRad;
+        padding: var(--md-p);
         display: flex;
         flex-direction: column;
-        gap: $md_p;
+        gap: var(--md-p);
 
-        h1 {
+        .app_title {
             text-align: center;
-            margin-bottom: $md_p;
+            margin-bottom: var(--md-p);
         }
 
         .resultCont {
-            padding: $md_p;
-            background-color: var(--BackColour2);
+            padding: var(--md-p);
+            background-color: var(--background-color-secondary);
             @include Dflex(center);
             cursor: pointer;
-            border-radius: $brRad;
+            border-radius: var(--border-radius-light);
             position: relative;
 
             .result {
@@ -38,20 +37,20 @@ main {
 
         .title {
             display: block;
-            margin-bottom: $sm_p;
+            margin-bottom: var(--sm-p);
         }
 
         .range_container {
 
             .range_body {
-                padding: $md_p;
+                padding: var(--md-p);
                 @include Dflex(space-between);
-                border-radius: $brRad;
-                gap: $md_p;
-                background-color: var(--BackColour2);
+                border-radius: var(--border-radius-light);
+                gap: var(--md-p);
+                background-color: var(--background-color-secondary);
 
                 small {
-                    font-size: 14px;
+                    font-size: var(--font-size-base);
                 }
 
                 .range {
@@ -65,36 +64,24 @@ main {
             .settings_wrapper {
                 display: flex;
                 flex-direction: column;
-                gap: $sm_p;
+                gap: var(--sm-p);
 
                 .body {
-                    padding: $md_p;
+                    padding: var(--md-p);
                     @include Dflex(space-between);
-                    border-radius: $brRad;
-                    background-color: var(--BackColour2);
+                    border-radius: var(--border-radius-light);
+                    background-color: var(--background-color-secondary);
                 }
-            }
-        }
-
-        .generate_btn {
-            width: 100%;
-            cursor: pointer;
-            border-radius: $brRad;
-            transition: opacity 400ms ease;
-
-            &:hover {
-                opacity: 0.5;
             }
         }
     }
 
     @media only screen and (max-width: 768px) {
         & {
-            .container {
-                border-width: 0;
+            .section_container {
 
-                h1 {
-                    font-size: 18px;
+                .app_title {
+                    font-size: var(--font-size-large);
                 }
 
                 .toggle {
@@ -119,9 +106,12 @@ main {
             width: 100vw;
             height: 100vh;
 
-            .container {
-                h1 {
-                    font-size: 24px;
+            .section_container {
+                border: 1px solid var(--border-color);
+                border-radius: var(--border-radius-light);
+
+                .app_title {
+                    font-size: var(--font-size-2xlarge);
                 }
             }
         }
