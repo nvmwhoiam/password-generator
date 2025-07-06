@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/index.css">
     <meta name="description"
-        content="A secure, customizable password generator built with vanilla JS, HTML5 & CSS3. Create 8–128 character passwords with copy, toggle, and slider features.">
+        content="A secure, customizable password generator built with vanilla JS, HTML5 & CSS3. Create 8-128 character passwords with copy, toggle, and slider features.">
     <link rel="icon" type="image/x-icon" href="../../assets/img/favicon-16x16.png">
     <link rel="icon" type="image/x-icon" href="../../assets/img/favicon-32x32.png">
     <link rel="canonical" href="https://sadevworks.com/demo/password-generator/">
@@ -23,89 +23,150 @@
 
     <main class="main_container">
 
+        <header class="header_container">
+            <h1 class="app_title">Password generator</h1>
+        </header>
+
         <section class="section_container">
 
-            <h1 class="app_title">Password generator</h1>
+            <div class="section_wrapper">
 
-            <div id="resultCont" data-show="result" class="resultCont">
-                <div data-generate="result" class="result">GENERATE</div>
-                <small class="copied">Copied!</small>
-            </div>
+                <div class="section_content">
 
-            <div class="range_container">
+                    <div class="result_container" id="resultCont" data-show="result">
 
-                <span class="title">Length: <b data-show="length">16</b></span>
-                <div class="range_body">
-                    <small>8</small>
-                    <input type="range" aria-label="Password length" data-element="range" class="range" min="8"
-                        max="128" value="16">
-                    <small>128</small>
+                        <div data-generate="result" class="result">
+                            GENERATE
+                        </div>
+
+                        <button type="button" class="btn_icon" data-btn="copy_password_main" aria-label="Copy password"
+                            disabled>
+                            <i class="icon_copy-regular"></i>
+                        </button>
+
+                        <small class="copied">Copied!</small>
+
+                    </div>
+
+                    <div class="range_container">
+
+                        <div class="title">
+                            Length: <b data-show="length">12</b>
+                        </div>
+
+                        <div class="range_body">
+                            <small>8</small>
+                            <input type="range" aria-label="Password length" data-element="range" class="range" min="8"
+                                max="128" value="12">
+                            <small>128</small>
+                        </div>
+
+                    </div>
+
+                    <div class="settings_container">
+
+                        <div class="title">
+                            Settings
+                        </div>
+
+                        <div class="settings_wrapper">
+
+                            <div class="body">
+                                <label for="hasuppercase">A-Z</label>
+
+                                <label class="toggle lg_toggle">
+                                    <input type="checkbox" name="hasuppercase" id="hasuppercase" checked>
+                                    <span class="slider_bg">
+                                        <span></span>
+                                    </span>
+                                </label>
+
+                            </div>
+
+                            <div class="body">
+                                <label for="haslowercase">a-z</label>
+
+                                <label class="toggle lg_toggle">
+                                    <input type="checkbox" name="haslowercase" id="haslowercase" checked>
+                                    <span class="slider_bg">
+                                        <span></span>
+                                    </span>
+                                </label>
+
+                            </div>
+
+                            <div class="body">
+                                <label for="hasnumbers">0-9</label>
+
+                                <label class="toggle lg_toggle">
+                                    <input type="checkbox" name="hasnumbers" id="hasnumbers">
+                                    <span class="slider_bg">
+                                        <span></span>
+                                    </span>
+                                </label>
+
+                            </div>
+
+                            <div class="body">
+                                <label for="hasspecialchars">!@#$%^&*-_+=</label>
+
+                                <label class="toggle lg_toggle">
+                                    <input type="checkbox" name="hasspecialchars" id="hasspecialchars">
+                                    <span class="slider_bg">
+                                        <span></span>
+                                    </span>
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="button_container">
+
+                        <button type="button" class="btn_primary" data-btn="generate" aria-label="Generate password">
+                            Generate
+                        </button>
+
+                        <button type="button" class="btn_icon" data-btn="history" aria-label="Password history">
+                            <i class="icon_clock-regular"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="section_history" data-state="closed">
+
+                    <div class="block_header">
+
+                        <button type="button" class="btn_icon" data-btn="back" aria-label="Back history">
+                            <i class="icon_chevron-left-solid"></i>
+                        </button>
+
+                        <h3 class="header_title">
+                            History
+                        </h3>
+
+                    </div>
+
+                    <div class="block_body" data-show="password_history"> </div>
+
                 </div>
 
             </div>
-
-            <div class="settings_container">
-
-                <span class="title">Settings</span>
-
-                <div class="settings_wrapper">
-
-                    <div class="body">
-                        <label for="hasuppercase">A-Z</label>
-
-                        <label class="toggle lg_toggle">
-                            <input type="checkbox" name="hasuppercase" id="hasuppercase" checked>
-                            <span class="slider_bg">
-                                <span></span>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="body">
-                        <label for="haslowercase">a-z</label>
-
-                        <label class="toggle lg_toggle">
-                            <input type="checkbox" name="haslowercase" id="haslowercase" checked>
-                            <span class="slider_bg">
-                                <span></span>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="body">
-                        <label for="hasnumbers">0-9</label>
-
-                        <label class="toggle lg_toggle">
-                            <input type="checkbox" name="hasnumbers" id="hasnumbers">
-                            <span class="slider_bg">
-                                <span></span>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="body">
-                        <label for="hasspecialchars">!@#$%^&*(),.?":{}|<></label>
-
-                        <label class="toggle lg_toggle">
-                            <input type="checkbox" name="hasspecialchars" id="hasspecialchars">
-                            <span class="slider_bg">
-                                <span></span>
-                            </span>
-                        </label>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-            <button type="button" class="btn_primary" data-btn="generate">Generate</button>
 
         </section>
+
+        <footer class="footer_container">
+
+            <p class="footer_content">
+                Copyright &copy; 2025. All Rights Reserved | Powered By <a href="https://sadevworks.com" hreflang="en"
+                    aria-label="Home page">SADevWorks.com</a>
+            </p>
+
+        </footer>
 
     </main>
 

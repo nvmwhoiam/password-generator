@@ -1,76 +1,150 @@
 @import "./general/base.scss";
+@import "./general/icons.css";
+@import "./general/keyframes.css";
 @import "./general/mixin.scss";
 
 .main_container {
-    @include Dflex(center);
 
     .section_container {
-        width: 100%;
-        max-width: 500px;
-        padding: var(--md-p);
-        display: flex;
-        flex-direction: column;
-        gap: var(--md-p);
 
-        .app_title {
-            text-align: center;
-            margin-bottom: var(--md-p);
-        }
-
-        .resultCont {
-            padding: var(--md-p);
-            background-color: var(--background-color-secondary);
-            @include Dflex(center);
-            cursor: pointer;
-            border-radius: var(--border-radius-light);
+        .section_wrapper {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
             position: relative;
+            overflow: hidden;
 
-            .result {
-                word-break: break-all;
-            }
-
-            .copied {
-                @include position (absolute, $top: -25px, $right: 0);
-                display: none;
-            }
-        }
-
-        .title {
-            display: block;
-            margin-bottom: var(--sm-p);
-        }
-
-        .range_container {
-
-            .range_body {
-                padding: var(--md-p);
-                @include Dflex(space-between);
-                border-radius: var(--border-radius-light);
-                gap: var(--md-p);
-                background-color: var(--background-color-secondary);
-
-                small {
-                    font-size: var(--font-size-base);
-                }
-
-                .range {
-                    flex: 1;
-                    cursor: pointer;
-                }
-            }
-        }
-
-        .settings_container {
-            .settings_wrapper {
+            .section_content {
                 display: flex;
                 flex-direction: column;
-                gap: var(--sm-p);
+                gap: var(--md-p);
+                padding: var(--md-p);
 
-                .body {
-                    padding: var(--md-p);
-                    @include Dflex(space-between);
-                    border-radius: var(--border-radius-light);
+                .result_container {
+                    display: flex;
                     background-color: var(--background-color-secondary);
+                    border-radius: var(--border-radius-light);
+                    position: relative;
+
+                    .result {
+                        flex: 1;
+                        padding: var(--md-p);
+                        word-break: break-all;
+                        @include Dflex(center);
+                    }
+
+                    .copied {
+                        @include position (absolute, $top: 48px, $right: 8px);
+                        display: none;
+                    }
+                }
+
+                .title {
+                    display: block;
+                    margin-bottom: var(--sm-p);
+                }
+
+                .range_container {
+                    .range_body {
+                        padding: var(--md-p);
+                        @include Dflex(space-between);
+                        border-radius: var(--border-radius-light);
+                        gap: var(--md-p);
+                        background-color: var(--background-color-secondary);
+
+                        small {
+                            font-size: var(--font-size-base);
+                        }
+
+                        .range {
+                            flex: 1;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .settings_container {
+                    .settings_wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        gap: var(--sm-p);
+
+                        .body {
+                            padding: var(--md-p);
+                            @include Dflex(space-between);
+                            border-radius: var(--border-radius-light);
+                            background-color: var(--background-color-secondary);
+                        }
+
+                    }
+
+                }
+
+                .button_container {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--md-p);
+
+                    .btn_primary {
+                        flex: 1;
+                    }
+
+                    .btn_icon {
+                        border: 1px solid var(--border-color);
+                    }
+                }
+            }
+
+            .section_history {
+                width: 100%;
+                height: 100%;
+                @include position(absolute, $top: 0, $left: 0);
+                @include dataStateSlide();
+                background-color: var(--background-color);
+
+                .block_header {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--sm-p);
+                    padding: var(--sm-p);
+                    background-color: var(--background-color-secondary);
+
+                    .btn_icon {
+                        border: 1px solid var(--border-color);
+                    }
+
+                    .header_title {
+                        font-size: var(--font-size-xlarge);
+                    }
+                }
+
+                .block_body {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--xs-p);
+                    overflow-y: auto;
+                    @include hideScroll();
+
+                    .history_item {
+                        display: flex;
+                        position: relative;
+
+                        &:not(:last-of-type) {
+                            border-bottom: 1px solid var(--border-color);
+                        }
+
+                        .copied {
+                            @include position (absolute, $top: -2px, $right: 8px);
+                        }
+
+                        .block_item {
+                            display: flex;
+                            flex-direction: column;
+                            gap: var(--xs-p);
+                            flex: 1;
+                            padding: var(--sm-p);
+                        }
+                    }
                 }
             }
         }
@@ -79,21 +153,32 @@
     @media only screen and (max-width: 768px) {
         & {
             .section_container {
+                .section_wrapper {
+                    .section_content {
+                        .result_container {
+                            height: 125px;
+                        }
 
-                .app_title {
-                    font-size: var(--font-size-large);
-                }
+                        .toggle {
+                            &.lg_toggle {
+                                width: 40px;
+                                height: 25px;
 
-                .toggle {
-                    &.lg_toggle {
-                        width: 40px;
-                        height: 25px;
-
-                        .slider_bg {
-                            span {
-                                width: 15px;
-                                height: 15px;
+                                .slider_bg {
+                                    span {
+                                        width: 15px;
+                                        height: 15px;
+                                    }
+                                }
                             }
+                        }
+                    }
+
+                    .section_history {
+                        .password_text {
+                            max-width: 311px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
                     }
                 }
@@ -107,12 +192,45 @@
             height: 100vh;
 
             .section_container {
-                border: 1px solid var(--border-color);
-                border-radius: var(--border-radius-light);
+                .section_wrapper {
+                    border: 1px solid var(--border-color);
+                    border-radius: var(--border-radius-light);
+
+                    .section_content {
+                        .result_container {
+                            height: 106px;
+                        }
+                    }
+
+                    .section_history {
+                        .password_text {
+                            max-width: 434px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .header_container,
+    .footer_container {
+        text-align: center;
+
+        @media only screen and (max-width: 768px) {
+            & {
+                padding: var(--md-p);
 
                 .app_title {
                     font-size: var(--font-size-2xlarge);
                 }
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            & {
+                padding: var(--xl-p) var(--md-p);
             }
         }
     }
