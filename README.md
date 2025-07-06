@@ -27,7 +27,14 @@ A web-based application to generate secure and customizable passwords. Users can
 - 🎨 Modern visual styling
 - 📱 Mobile-friendly layout
 
-## Installation
+## Technologies Used
+
+- **HTML5:** Core structure and semantic markup
+- **CSS3/SCSS:** Advanced styling with SCSS preprocessing
+- **JavaScript:** Dynamic functionality and user interactions
+- **Custom Icon Fonts:** Optimized icon delivery system
+
+## How to Use
 
 1. Clone the repository:
    ```sh
@@ -95,6 +102,10 @@ A web-based application to generate secure and customizable passwords. Users can
 ## Screenshots
 
 ![Alt text](https://sadevworks.com/assets/img/projects/password-generator-v2.0.0.png "a title")
+
+## Live Demo
+
+[Live Demo](https://sadevworks.com/demo/password-generator)
 
 ## Future Improvements
 
